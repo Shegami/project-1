@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from shortener.views import shortener, click_counter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', shortener, name='shortener'),
+    path('<int:link_id>', click_counter, name='click_counter')
 ]

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} Shortener {% endblock %}
+
+{% block body %}
+    <form method="post" action="{% url 'shortener' %}">
+        {{ form.as_p }}
+        <button type="reset">Reset</button>
+        <button name="button" value="submit" type="submit">Generate</button>
+    </form>
+<p></p>
+<table style="width:80%" border="3">
+    <caption>Shorted links</caption>
+    <tr>
+        <td align="center" bgcolor="#c0c0c0">ID</td>
+        <td align="center" bgcolor="#c0c0c0">FULL LINK</td>
+        <td align="center" bgcolor="#c0c0c0">SHORT LINK</td>
+        <td align="center" bgcolor="#c0c0c0">GENERATED</td>
+        <td align="center" bgcolor="#c0c0c0">CLICKS</td>
+    </tr>
+    {% for link in links %}
+    <tr>
+        <td>
+            {{ link.id }}
+        </td>
+        <td>
+            {{ link.full_url }}
+        </td>
+        <td>
+            <a href="{% url 'click_counter' link.id %}">{{ link.short_url }}</a>
+        </td>
+        <td>
+            {{ link.create_date }}
+        </td>
+        <td>
+            {{ link.clicks }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
