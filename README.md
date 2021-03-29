@@ -76,8 +76,7 @@ Linux OS:
 ## Usage
 
 
-[product-demo]
-[product-demo-png]
+![Shortener Demo][product-demo]
 
 
 
@@ -112,4 +111,3 @@ Project Link: [https://github.com/Shegami/project-1](https://github.com/Shegami/
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [product-demo]: images/demo.gif
-[product-demo-png]: images/demo.png
