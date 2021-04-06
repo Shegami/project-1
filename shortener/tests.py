@@ -30,17 +30,16 @@ class CreateModelTest(TestCase):
 class ClicksTest(TestCase):
     def setUp(self):
         Shortener.objects.create(
-            id=-1,
             full_url='https://www.onliner.by/',
             short_url='http://127.0.0.1:8000/TEST'
         )
 
     def test_click_counter(self):
-        model = Shortener.objects.get(id=-1)
+        model = Shortener.objects.get(id=1)
         self.assertEqual(model.clicks, 0)
         click_counter(request=None,
                       link_id=model.id)
-        model = Shortener.objects.get(id=-1)
+        model = Shortener.objects.get(id=1)
         self.assertEqual(model.clicks, 1)
 
 
@@ -64,7 +63,6 @@ class UserUrlTest(TestCase):
 class IsAvailableTest(TestCase):
     def setUp(self):
         Shortener.objects.create(
-            id=-1,
             full_url='https://www.onliner.by/',
             short_url='http://127.0.0.1:8000/TEST'
         )
@@ -85,3 +83,16 @@ class GenerateUrlTest(TestCase):
     def test_generate_url(self):
         result = generate_url(user_url='ALPHABET')
         self.assertEqual(result, 'http://127.0.0.1:8000/ALPHABET')
+
+
+class FullLink(TestCase):
+    def setUp(self):
+        Shortener.objects.create(
+            full_url='https://www.onliner.by/',
+            short_url='http://127.0.0.1:8000/TEST'
+        )
+
+    def test_full(self):
+        model = Shortener.objects.get(id=1)
+        result = self.client.get(model.full_url)
+        TestCase.assertEqual(self, result.status_code, 200)
