@@ -102,7 +102,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Kanstantsin Toukach - kanstantsin.toukach@gmail.com
 
-Project Link: [https://github.com/Shegami/project-1](https://github.com/Shegami/project-1)
+Project Link: [https://tms-shortener.herokuapp.com/](https://tms-shortener.herokuapp.com/)
 
 
 
