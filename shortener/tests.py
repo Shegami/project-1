@@ -47,7 +47,6 @@ class NoUserUrlTest(TestCase):
     @mock.patch('shortener.views.generate_url', return_value='TEST')
     def test_is_user_url(self, user_url=''):
         result = is_user_url(user_url)
-        print(result)
         self.assertEqual(result, 'TEST')
 
 
